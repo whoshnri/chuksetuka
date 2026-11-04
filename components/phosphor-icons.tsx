@@ -14,6 +14,14 @@ export function ArrowRight(props: IconProps) {
   return <Icon {...props}><path d="M221.66 133.66 149.66 205.66a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z" fill="currentColor" /></Icon>
 }
 
+export function CaretDown(props: IconProps) {
+  return <Icon {...props}><path d="m208 96-80 80-80-80" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="20" /></Icon>
+}
+
+export function CaretRight(props: IconProps) {
+  return <Icon {...props}><path d="m96 48 80 80-80 80" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="20" /></Icon>
+}
+
 export function Play(props: IconProps) {
   return <Icon {...props}><path d="M232.4 114.49 88.32 27.55A16 16 0 0 0 64 41.06v173.88a16 16 0 0 0 24.32 13.51l144.08-86.94a15.95 15.95 0 0 0 0-27.02Z" fill="currentColor" /></Icon>
 }
