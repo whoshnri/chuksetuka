@@ -11806,4 +11806,11 @@ body,
   scroll-margin-top: 7rem;
 }
 
+/* Keep the homepage popup pear silhouette despite the site-wide shape reset. */
+.site-shell .homepage-popup-fancy-shape {
+  clip-path: url(#shape-pear-tl) !important;
+  border-radius: 0 !important;
+  filter: drop-shadow(0 16px 28px rgb(14 38 39 / 22%));
+}
+
 

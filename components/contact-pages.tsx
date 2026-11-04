@@ -1,21 +1,28 @@
 import Link from "next/link"
-import { ArrowRight, CalendarBlank as CalendarDays, ChatCircleText, EnvelopeSimple as Mail } from "./phosphor-icons"
+import { ArrowRight, ArrowUpRight, CalendarBlank as CalendarDays, ChatCircleText, EnvelopeSimple as Mail } from "./phosphor-icons"
 import { ContactForm } from "./contact-form"
 import { SiteShell } from "./site-shell"
 
 export function BookCallPage() {
   return (
     <SiteShell activePage="book" className="booking-page bk-page">
-      <header className="mx-auto flex w-full max-w-3xl flex-col items-center gap-4 text-center">
-        <h1 className="m-0 font-[var(--font-heading)] text-4xl font-bold leading-[1.05] tracking-[-.04em] sm:text-5xl lg:text-6xl">Let’s start with a conversation.</h1>
-        <p className="m-0 max-w-2xl text-base leading-7 text-[#555d5c] sm:text-lg">Book a free 30-minute call to talk through your organisation’s needs and explore the right support.</p>
-      </header>
-      <section className="mx-auto flex min-h-[420px] w-full max-w-4xl items-center justify-center rounded-lg border border-dashed border-[#cbd5d3] bg-[#f6f8f7] p-8 text-center sm:min-h-[520px]" aria-label="Booking widget placeholder">
-        <div className="flex max-w-sm flex-col items-center gap-4">
-          <span className="flex size-14 items-center justify-center rounded-lg border border-[#d8dfde] bg-white text-[#17686c]"><CalendarDays size={26} aria-hidden="true" /></span>
-          <h2 className="m-0 font-[var(--font-heading)] text-xl font-semibold tracking-[-.02em] text-[#171514]">Booking widget placeholder</h2>
-        </div>
-      </section>
+      <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(230px,.42fr)_minmax(0,1fr)] lg:gap-10">
+        <header className="flex flex-col items-start gap-4 text-left">
+          <h1 className="m-0 font-[var(--font-heading)] text-4xl font-bold leading-[1.05] tracking-[-.04em] sm:text-5xl">Let’s start with a conversation.</h1>
+          <p className="m-0 text-base leading-7 text-[#555d5c]">Book a free 30-minute call to talk through your organisation’s needs and explore the right support.</p>
+          <div className="mt-2 flex flex-col items-start gap-3">
+            <a className="inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#17686c] no-underline hover:text-[#e9611b]" href="mailto:info@chuksetukaconsulting.com"><Mail size={18} aria-hidden="true" />info@chuksetukaconsulting.com</a>
+            <a className="inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#17686c] no-underline hover:text-[#e9611b]" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={16} aria-hidden="true" /></a>
+          </div>
+        </header>
+        <section className="w-full overflow-hidden rounded-lg border border-[#d8dfde] bg-white" aria-label="Book a 30-minute call">
+          <iframe
+            className="block h-[820px] w-full border-0 sm:h-[760px]"
+            src="https://calendly.com/chuksetuka/30min"
+            title="Schedule a 30-minute call with Chuks Etuka"
+          />
+        </section>
+      </div>
     </SiteShell>
   )
 }

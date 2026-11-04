@@ -10,6 +10,7 @@ import { AboutImageCarousel } from "./about-image-carousel"
 import { MasterclassFaq } from "./masterclass-faq"
 import { AnimatedCount } from "./animated-count"
 import { ActionLink, PageCta, PageIntro, PartnerSection, SectionHeading, paperAssets } from "./site-ui"
+import { HomepageEngagementPopups } from "./homepage-engagement-popups"
 
 const homeServices = [
   { label: "Training", title: "Lived experience training & facilitation", copy: "I don’t just talk inclusion; I live it, and I help you embed it in ways that stick." },
@@ -157,6 +158,7 @@ export function HomePage() {
         </section>
         <PartnerSection showEyebrow={false} />
       </div>
+      <HomepageEngagementPopups />
     </SiteShell>
   )
 }
