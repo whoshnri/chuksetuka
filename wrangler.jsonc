@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "chuks-website",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-07",
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
+  "vars": {
+    "CMS_PUBLIC_URL": "https://replace-with-cms-hostname",
+    "ASSETS_PUBLIC_URL": "https://pub-62998d0c687d4411aaa04f8cf20fee6e.r2.dev"
+  },
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "services": [{ "binding": "API", "service": "chuks-content-api" }]
+}
