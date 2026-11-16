@@ -8,14 +8,12 @@ import { ArticleEngagement } from "./article-engagement";
 import { ArticleRichText, getArticleOutline, legacyParagraphsToArticleBody } from "./article-rich-text";
 import { ArrowRight as PhosphorArrowRight, Clock } from "./phosphor-icons";
 import {
-  featuredInsight,
-  insightArticles,
   insightCategories,
-  mostReadInsights,
   type InsightArticle,
 } from "./insights-data";
 import { getArticles, getCategories } from "@/lib/server/content";
 import { InsightsGrid } from "./insights-grid";
+import { ContentError } from "./content-error";
 
 function InsightArticleCard({
   article,
@@ -118,9 +116,24 @@ function InsightsHeader({
 
 export async function InsightsPage() {
   const [articles, categories] = await Promise.all([getArticles(), getCategories()]);
-  const featured = articles[0] || featuredInsight;
-  const latest = articles.filter((article) => article.slug !== featured.slug);
-  const mostRead = articles.slice(1, 5);
+
+  if (!articles || !categories) {
+    return (
+      <SiteShell activePage="insights">
+        <ContentError
+          title="Insights unavailable"
+          message="We couldn't load the articles right now. Please try again in a moment."
+          returnHref="/"
+          returnLabel="Return home"
+        />
+      </SiteShell>
+    );
+  }
+
+  const featured = articles[0];
+  const latest = featured ? articles.filter((a) => a.slug !== featured.slug) : articles;
+  const mostRead = articles.slice(0, 4);
+
   return (
     <SiteShell activePage="insights">
       <header className="flex flex-col items-start gap-6">
@@ -151,35 +164,37 @@ export async function InsightsPage() {
           ))}
         </nav>
       </header>
-      <section
-        className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(260px,.8fr)]"
-        aria-label="Featured article"
-      >
-        <InsightArticleCard article={featured} featured />
-        <aside className="flex flex-col gap-5 rounded-bl-[48px] bg-[#17686c] px-7 py-8 text-white sm:px-9 sm:py-10">
-          <h2 className="m-0 !text-white text-2xl font-semibold">
-            Most read
-          </h2>
-          <ol className="m-0 flex list-none flex-col gap-1 p-0">
-            {mostRead.map((article) => (
-              <li
-                className="border-t border-white/25 py-4 first:border-0 first:pt-0"
-                key={article.slug}
-              >
-                <Link
-                  className="text-base font-semibold leading-6 text-white hover:underline"
-                  href={`/insights/${article.slug}`}
+      {featured && (
+        <section
+          className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(260px,.8fr)]"
+          aria-label="Featured article"
+        >
+          <InsightArticleCard article={featured} featured />
+          <aside className="flex flex-col gap-5 rounded-bl-[48px] bg-[#17686c] px-7 py-8 text-white sm:px-9 sm:py-10">
+            <h2 className="m-0 !text-white text-2xl font-semibold">
+              Most read
+            </h2>
+            <ol className="m-0 flex list-none flex-col gap-1 p-0">
+              {mostRead.map((article) => (
+                <li
+                  className="border-t border-white/25 py-4 first:border-0 first:pt-0"
+                  key={article.slug}
                 >
-                  {article.title}
-                </Link>
-                <p className="mb-0 mt-2 text-sm leading-5 text-white/75">
-                  {article.category} · {article.minutes} min read
-                </p>
-              </li>
-            ))}
-          </ol>
-        </aside>
-      </section>
+                  <Link
+                    className="text-base font-semibold leading-6 text-white hover:underline"
+                    href={`/insights/${article.slug}`}
+                  >
+                    {article.title}
+                  </Link>
+                  <p className="mb-0 mt-2 text-sm leading-5 text-white/75">
+                    {article.category} · {article.minutes} min read
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </aside>
+        </section>
+      )}
       <InsightsGrid articles={latest} />
       <section
         className="flex flex-col items-start justify-between gap-8 rounded-lg bg-[#17686c] px-7 py-10 text-white sm:px-12 sm:py-14 lg:flex-row lg:items-center"
@@ -215,12 +230,12 @@ export async function InsightsPage() {
 
 export function InsightCategoryPage({
   category,
-  articles: allArticles = insightArticles,
-  categories = insightCategories,
+  articles: allArticles,
+  categories,
 }: {
   category: { label: string; slug: string };
-  articles?: InsightArticle[];
-  categories?: { label: string; slug: string }[];
+  articles: InsightArticle[];
+  categories: { label: string; slug: string }[];
 }) {
   const articles = allArticles.filter(
     (article) => article.categorySlug === category.slug,
@@ -256,9 +271,10 @@ export function InsightCategoryPage({
   );
 }
 
-export function InsightArticlePage({ article }: { article: InsightArticle }) {
+export function InsightArticlePage({ article, relatedArticles = [] }: { article: InsightArticle; relatedArticles?: InsightArticle[] }) {
   const articleBody = article.body || legacyParagraphsToArticleBody(article.paragraphs);
   const sidebarItems = getArticleOutline(articleBody);
+  const related = relatedArticles.filter((item) => item.slug !== article.slug).slice(0, 3);
 
   return (
     <SiteShell activePage="insights" className="insight-article-page">
@@ -300,22 +316,21 @@ export function InsightArticlePage({ article }: { article: InsightArticle }) {
           <ArticleEngagement title={article.title} slug={article.slug} />
         </article>
       </div>
-      <section className="related-insights">
-        <div className="section-heading-row">
-          <h2>Related insights</h2>
-          <Link href="/insights" className="text-link">
-            All insights <ArrowRight size={16} aria-hidden="true" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {mostReadInsights
-            .filter((item) => item.slug !== article.slug)
-            .slice(0, 3)
-            .map((item) => (
+      {related.length > 0 && (
+        <section className="related-insights">
+          <div className="section-heading-row">
+            <h2>Related insights</h2>
+            <Link href="/insights" className="text-link">
+              All insights <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {related.map((item) => (
               <InsightArticleCard article={item} key={item.slug} />
             ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
       <PageCta
         className="page-cta--fancy-teal"
         title="Is your culture inclusive… or just well-branded?"

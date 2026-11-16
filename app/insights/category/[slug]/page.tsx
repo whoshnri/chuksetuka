@@ -3,6 +3,8 @@ import { notFound } from "next/navigation"
 import { InsightCategoryPage } from "@/components/insights-pages"
 import { insightCategories } from "@/components/insights-data"
 import { getArticles, getCategories } from "@/lib/server/content"
+import { SiteShell } from "@/components/site-shell"
+import { ContentError } from "@/components/content-error"
 export const dynamic = "force-dynamic"
 
 type PageProps = { params: Promise<{ slug: string }> }
@@ -14,7 +16,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
   const categories = await getCategories()
-  const category = categories.find((item) => item.slug === slug)
+  const category = categories?.find((item) => item.slug === slug)
   if (!category) return { title: "Topic not found" }
   return { title: `${category.label} insights`, description: `Articles and resources on ${category.label.toLowerCase()} from Chuks Etuka.` }
 }
@@ -22,6 +24,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function Page({ params }: PageProps) {
   const { slug } = await params
   const [categories, articles] = await Promise.all([getCategories(), getArticles()])
+
+  if (!categories || !articles) {
+    return (
+      <SiteShell activePage="insights">
+        <ContentError
+          title="Insights unavailable"
+          message="We couldn't load the articles right now. Please try again in a moment."
+          returnHref="/insights"
+          returnLabel="Back to insights"
+        />
+      </SiteShell>
+    )
+  }
+
   const category = categories.find((item) => item.slug === slug)
   if (!category) notFound()
   return <InsightCategoryPage category={category} articles={articles} categories={categories} />

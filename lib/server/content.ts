@@ -1,6 +1,6 @@
 import { getCloudflareContext } from '@opennextjs/cloudflare'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
-import { insightArticles, insightCategories, type InsightArticle } from '@/components/insights-data'
+import type { InsightArticle } from '@/components/insights-data'
 
 type PayloadDoc = {
   slug: string; title: string; category: string | { id: string; label: string; slug: string }; categorySlug: string; publishedAt?: string;
@@ -38,27 +38,23 @@ function toArticle(doc: PayloadDoc): InsightArticle {
   }
 }
 
-export async function getArticles(): Promise<InsightArticle[]> {
+export async function getArticles(): Promise<InsightArticle[] | null> {
   const response = await getApiResponse('/content/articles')
-  if (!response?.ok) return insightArticles
+  if (!response?.ok) return null
   const payload = await response.json() as { docs?: PayloadDoc[] }
-  return payload.docs?.length ? payload.docs.map(toArticle) : insightArticles
+  return payload.docs?.length ? payload.docs.map(toArticle) : []
 }
 
-export async function getArticle(slug: string): Promise<InsightArticle | undefined> {
+export async function getArticle(slug: string): Promise<{ article: InsightArticle | undefined; error: boolean }> {
   const response = await getApiResponse(`/content/articles/${encodeURIComponent(slug)}`)
-  if (response?.ok) {
-    const payload = await response.json() as { docs?: PayloadDoc[] }
-    if (payload.docs?.[0]) return toArticle(payload.docs[0])
-  }
-  return insightArticles.find((article) => article.slug === slug)
+  if (!response?.ok) return { article: undefined, error: true }
+  const payload = await response.json() as { docs?: PayloadDoc[] }
+  return { article: payload.docs?.[0] ? toArticle(payload.docs[0]) : undefined, error: false }
 }
 
-export async function getCategories() {
+export async function getCategories(): Promise<{ label: string; slug: string }[] | null> {
   const response = await getApiResponse('/content/categories')
-  if (response?.ok) {
-    const payload = await response.json() as { docs?: { label: string; slug: string }[] }
-    if (payload.docs?.length) return payload.docs
-  }
-  return insightCategories
+  if (!response?.ok) return null
+  const payload = await response.json() as { docs?: { label: string; slug: string }[] }
+  return payload.docs?.length ? payload.docs : []
 }
