@@ -76,8 +76,8 @@ function NavigationLinks({ activePage, mobile = false }: { activePage: SitePageK
 function SocialLinks() {
   return (
     <nav aria-label="Social media" className="social-links">
-      <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="social-link" aria-label="YouTube"><Image src="https://thesvg.org/icons/youtube/mono.svg" alt="" width={16} height={16} aria-hidden="true" /></a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="social-link" aria-label="LinkedIn"><Image src="https://thesvg.org/icons/linkedin/default.svg" alt="" width={16} height={16} aria-hidden="true" /></a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="social-link" aria-label="YouTube"><Image src="/assets/youtube-mono.svg" alt="" width={16} height={16} aria-hidden="true" /></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="social-link" aria-label="LinkedIn"><Image src="/assets/linkedin-default.svg" alt="" width={16} height={16} aria-hidden="true" /></a>
     </nav>
   )
 }

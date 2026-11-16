@@ -3,30 +3,28 @@ import Link from "next/link"
 import { ArrowRight } from "./phosphor-icons"
 import type { ReactNode } from "react"
 
-const paperFile = "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N"
-
 export const paperAssets = {
-  logo: `${paperFile}/2CV4K76R1DX83S80CEKDM3AWGF.png`,
-  homeHero: `${paperFile}/6KJV6Q0HSTW7J8PKQ5S3FN4PFW.jpg`,
-  homeTraining: `${paperFile}/3F89ER0RY6G5A7E2G5X15WWA8W.jpg`,
-  homeSpeaker: `${paperFile}/1PGYM7KPKBZHPMXFR0E49E6X05.jpg`,
-  homeEvent: `${paperFile}/367E272MGQY2YXWCSW5554YA6N.jpg`,
-  homeWorkshop: `${paperFile}/0Y1FE23ANQ50ENCGSMQ7H2YR6N.jpg`,
-  reedLearning: `${paperFile}/08Z7S06B2D2TVG0WCAFEJ2B3QF.png`,
-  aboutPortrait: `${paperFile}/1QHRJXSJSJF4RDY5GDCH9VNRER.jpg`,
-  aboutWorkshop: `${paperFile}/6DG1KGMTBW2FB9AJ6FJB8P8PSY.jpg`,
-  serviceTraining: `${paperFile}/1PGYM7KPKBZHPMXFR0E49E6X05.jpg`,
-  serviceStrategy: `${paperFile}/6QHVTT8AR2Q5MAZSHDBJHSMMF0.jpg`,
-  serviceLeadership: `${paperFile}/5R273EYF7NH8SH1JCYGWT2V0KB.jpg`,
-  serviceKeynote: `${paperFile}/2WMM9C6M496V3W9K8T9EC927HF.jpg`,
-  testimonial: `${paperFile}/3F8BJYH4T6K6EDFAJDJ1DMX8E4.jpg`,
-  galleryOne: `${paperFile}/7KG8MV1QYYWQE7PTHH72KTCKA4.jpg`,
-  galleryTwo: `${paperFile}/2847V8Z96XW8DY06EERWY3A6HK.jpg`,
-  galleryThree: `${paperFile}/1ECCM7TTGFRK4VCAWGCMSDFV4H.jpg`,
-  galleryFour: `${paperFile}/3JZXYA2DHK232PNDYMB77APA1X.jpg`,
-  insightOne: `${paperFile}/2JGY4DBQP3YHRXNBWGBN38QQ2S.jpg`,
-  insightTwo: `${paperFile}/5510NHXMEMTWD1T813YV4WSBRJ.jpg`,
-  insightThree: `${paperFile}/39317VCFCWRDN93R2QZS2P8TWJ.jpg`,
+  logo: "/assets/logo.png",
+  homeHero: "/assets/home-hero.jpg",
+  homeTraining: "/assets/home-training.jpg",
+  homeSpeaker: "/assets/home-speaker.jpg",
+  homeEvent: "/assets/home-event.jpg",
+  homeWorkshop: "/assets/home-workshop.jpg",
+  reedLearning: "/assets/reed-learning.png",
+  aboutPortrait: "/assets/about-portrait.jpg",
+  aboutWorkshop: "/assets/about-workshop.jpg",
+  serviceTraining: "/assets/service-training.jpg",
+  serviceStrategy: "/assets/service-strategy.jpg",
+  serviceLeadership: "/assets/service-leadership.jpg",
+  serviceKeynote: "/assets/service-keynote.jpg",
+  testimonial: "/assets/testimonial.jpg",
+  galleryOne: "/assets/gallery-one.jpg",
+  galleryTwo: "/assets/gallery-two.jpg",
+  galleryThree: "/assets/gallery-three.jpg",
+  galleryFour: "/assets/gallery-four.jpg",
+  insightOne: "/assets/insight-one.jpg",
+  insightTwo: "/assets/insight-two.jpg",
+  insightThree: "/assets/insight-three.jpg",
 }
 
 type PageIntroProps = {

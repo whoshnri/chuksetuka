@@ -6,18 +6,7 @@ initOpenNextCloudflareForDev()
 const nextConfig = {
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'app.paper.design',
-        pathname: '/file-assets/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'thesvg.org',
-        pathname: '/icons/**',
-      },
-    ],
+    remotePatterns: [],
   },
   async headers() {
     return [

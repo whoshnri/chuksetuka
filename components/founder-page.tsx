@@ -5,10 +5,8 @@ import { SiteShell } from './site-shell'
 import { FounderPhotoMarquee } from './founder-photo-marquee'
 
 const assets = {
-  portrait:
-    'https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/5ZGATY1JVY85Y2FAHXX29MDAA4.jpg',
-  speaking:
-    'https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/1CBNK4YJ1SJBDQ9HCE6YRE2YM3.jpg',
+  portrait: '/assets/founder-hero.jpg',
+  speaking: '/assets/founder-audience.jpg',
 }
 
 const livedExperienceCopy = `Hi, I’m Chuks Etuka, you can call me Chuks. It is the short form for Chukwunweike. It is not spelt ‘Chucks’, Chuck’, ‘Chiks’, ‘Tuks’, Chooooks…. It is simply Chuks…I am a DEI&B leader, speaker, and strategist with a solid 20+ years under my belt working across social justice, charity, public, and private sectors. Basically, I’ve been around the block (and probably redesigned a few ramps while I was at it). As a proud Black man living with a disability, I don’t get to “opt out” of conversations about race, inclusion, or accessibility, my very existence is the conversation. I’ve walked into rooms where I’ve been underestimated before I even spoke. I’ve had to navigate systems that weren’t built for bodies like mine and question whether I was being excluded because of my skin colour, my disability or both.`

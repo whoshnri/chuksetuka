@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef, type MouseEvent, type ReactNode } from 'react'
-import { Menu } from 'lucide-react'
+import { useEffect, useState, type MouseEvent, type ReactNode } from 'react'
+import { List, X } from './phosphor-icons'
 
 type MobileHeaderProps = {
   logoSrc: string
@@ -11,15 +11,35 @@ type MobileHeaderProps = {
 }
 
 export function MobileHeader({ logoSrc, children }: MobileHeaderProps) {
-  const menuRef = useRef<HTMLDetailsElement>(null)
+  const [open, setOpen] = useState(false)
+  const [visible, setVisible] = useState(false)
 
-  // Close only when a link is followed. Taps on the expandable group buttons
-  // ("Our Impact", "Services") must leave the menu open so their sub-links are reachable.
-  function closeMenu(event: MouseEvent<HTMLDivElement>) {
-    const target = event.target as HTMLElement
-    if (menuRef.current && target.closest('a')) {
-      menuRef.current.open = false
+  useEffect(() => {
+    if (open) {
+      setVisible(true)
+      return
     }
+    const timeout = window.setTimeout(() => setVisible(false), 520)
+    return () => window.clearTimeout(timeout)
+  }, [open])
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  useEffect(() => {
+    if (!visible) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [visible])
+
+  function handleNavClick(event: MouseEvent<HTMLDivElement>) {
+    if ((event.target as HTMLElement).closest('a')) setOpen(false)
   }
 
   return (
@@ -27,15 +47,26 @@ export function MobileHeader({ logoSrc, children }: MobileHeaderProps) {
       <Link aria-label="Chuks Etuka Consulting home" className="mobile-brand" href="/">
         <Image alt="Chuks Etuka Consulting" height={56} src={logoSrc} width={112} />
       </Link>
-      <details className="mobile-menu" ref={menuRef}>
-        <summary aria-controls="mobile-navigation" className="mobile-menu__trigger">
-          <span>Menu</span>
-          <Menu aria-hidden="true" size={18} strokeWidth={1.8} />
-        </summary>
-        <div className="mobile-menu__panel" id="mobile-navigation" onClick={closeMenu} data-lenis-prevent>
-          {children}
+      <button
+        type="button"
+        className="mobile-menu__trigger"
+        aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        {open ? <X size={22} /> : <List size={22} />}
+      </button>
+      {visible && (
+        <div
+          className={`mobile-menu__panel${open ? ' mobile-menu__panel--open' : ' mobile-menu__panel--closing'}`}
+          onClick={handleNavClick}
+          data-lenis-prevent
+        >
+          <div className="mobile-menu__inner">
+            {children}
+          </div>
         </div>
-      </details>
+      )}
     </header>
   )
 }

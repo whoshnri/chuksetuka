@@ -32,7 +32,7 @@ export const insightArticles: InsightArticle[] = [
     date: "2 October 2026",
     minutes: 8,
     excerpt: "Launch events are easy. The real test comes three months later, when the people who were meant to own the work go back to their day jobs.",
-    image: "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/12RCA9VZGZC2CWN2XWCNK0EJ01.jpg",
+    image: "/assets/insight-inclusion-training.jpg",
     imageAlt: "An inclusive leadership workshop in progress",
     paragraphs: [
       "A strategy launch can feel like a finish line. The room is full, the commitments sound clear and the organisation has a new document to share. The real work begins when everyone returns to their day jobs.",
@@ -48,7 +48,7 @@ export const insightArticles: InsightArticle[] = [
     date: "18 September 2026",
     minutes: 6,
     excerpt: "Meeting the legal minimum is a starting point. Designing out barriers is the work.",
-    image: "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/43ZTGWRZTTVN4FQDNSRJVX5ND0.jpg",
+    image: "/assets/insight-hiring-process.jpg",
     imageAlt: "Accessible workshop materials arranged on a table",
     paragraphs: [
       "Reasonable adjustments matter. They can remove a barrier for a person who has already had to explain why the usual process does not work for them. But a responsive adjustment is only one part of accessibility.",
@@ -64,7 +64,7 @@ export const insightArticles: InsightArticle[] = [
     date: "25 September 2026",
     minutes: 7,
     excerpt: "How a leader reacts to the first difficult message decides whether there will be a second.",
-    image: "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/02PFRE3DQ7YKJJNYRRS4FEZQ2D.jpg",
+    image: "/assets/insight-cultural-attire.jpg",
     imageAlt: "A team discussing a workplace challenge",
     paragraphs: [
       "Every organisation says it wants people to speak up. Fewer look closely at what happens in the ten seconds after someone does. The pause, the tone and the first question tell everyone in the room whether honesty is welcome or risky.",
@@ -82,7 +82,7 @@ export const insightArticles: InsightArticle[] = [
     date: "4 September 2026",
     minutes: 6,
     excerpt: "Why the most useful training starts with honest stories, not slides.",
-    image: "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/16FF25JYGFS0EWW8SC86H5EC35.jpg",
+    image: "/assets/insight-growing-up.jpg",
     imageAlt: "Chuks facilitating a practical inclusion workshop",
     paragraphs: [
       "Lived experience can make an abstract policy feel human. It helps a group connect a decision, a process or a comment to the person who has to navigate it.",
@@ -98,7 +98,7 @@ export const insightArticles: InsightArticle[] = [
     date: "21 August 2026",
     minutes: 6,
     excerpt: "Workforce data matters, but only if it leads to a conversation and a change.",
-    image: "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/477R0ZG8VTXQ21Y5PS20DK5S9W.jpg",
+    image: "/assets/insight-revolving-door.jpg",
     imageAlt: "A team reviewing workplace inclusion information",
     paragraphs: [
       "Data can help an organisation notice patterns in recruitment, progression, retention and access. It cannot tell you everything about why those patterns exist or what they feel like to the people involved.",
@@ -114,7 +114,7 @@ export const insightArticles: InsightArticle[] = [
     date: "7 August 2026",
     minutes: 5,
     excerpt: "Barriers often appear long before the interview. Here is where to look.",
-    image: "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/3NH15RW484EZXEVR43RV4KSVZJ.jpg",
+    image: "/assets/insight-accessible-org.jpg",
     imageAlt: "A hiring team reviewing an inclusive recruitment process",
     paragraphs: [
       "The job advert is visible, but many recruitment barriers begin earlier: in how roles are designed, how essential criteria are chosen and who gets asked to shape the process.",
@@ -130,7 +130,7 @@ export const insightArticles: InsightArticle[] = [
     date: "24 July 2026",
     minutes: 6,
     excerpt: "Mistakes will happen. What matters is whether your culture can learn from them.",
-    image: "https://app.paper.design/file-assets/01M649F2ZY5MK8CYFX2Q256K2N/48D617P74XETQH1WAAGE26AQQQ.jpg",
+    image: "/assets/insight-designers.jpg",
     imageAlt: "A facilitated discussion about inclusive leadership",
     paragraphs: [
       "Inclusion does not mean people never make mistakes. It means the organisation has a way to respond that takes impact seriously and leaves room for learning and accountability.",
