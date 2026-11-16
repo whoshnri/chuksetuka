@@ -15,6 +15,7 @@ import {
   type InsightArticle,
 } from "./insights-data";
 import { getArticles, getCategories } from "@/lib/server/content";
+import { InsightsGrid } from "./insights-grid";
 
 function InsightArticleCard({
   article,
@@ -104,7 +105,7 @@ function InsightsHeader({
         {categories.map((category, index) => (
           <Link
             href={`/insights/category/${category.slug}`}
-            className={`inline-flex min-h-9 items-center border border-r-0 px-3.5 text-[13px] no-underline transition ${index === insightCategories.length - 1 ? "rounded-r-md border-r" : "rounded-none"} ${activeCategory === category.label ? "border-[#17686c] bg-[#17686c] font-semibold text-white" : "border-[#d8dfde] text-[#3a3f40] hover:bg-[#e8f5f6]"}`}
+            className={`inline-flex min-h-9 items-center border border-r-0 px-3.5 text-[13px] no-underline transition ${index === categories.length - 1 ? "rounded-r-md border-r" : "rounded-none"} ${activeCategory === category.label ? "border-[#17686c] bg-[#17686c] font-semibold text-white" : "border-[#d8dfde] text-[#3a3f40] hover:bg-[#e8f5f6]"}`}
             key={category.slug}
           >
             {category.label}
@@ -142,7 +143,7 @@ export async function InsightsPage() {
           {categories.map((category, index) => (
             <Link
               href={`/insights/category/${category.slug}`}
-              className={`inline-flex min-h-9 items-center border border-r-0 border-[#d8dfde] px-3.5 text-[13px] text-[#3a3f40] no-underline transition hover:bg-[#e8f5f6] ${index === insightCategories.length - 1 ? "rounded-r-md border-r" : "rounded-none"}`}
+              className={`inline-flex min-h-9 items-center border border-r-0 border-[#d8dfde] px-3.5 text-[13px] text-[#3a3f40] no-underline transition hover:bg-[#e8f5f6] ${index === categories.length - 1 ? "rounded-r-md border-r" : "rounded-none"}`}
               key={category.slug}
             >
               {category.label}
@@ -179,59 +180,7 @@ export async function InsightsPage() {
           </ol>
         </aside>
       </section>
-      <section className="flex flex-col gap-7">
-        <div className="flex flex-wrap items-end justify-between gap-5">
-          <h2 className="m-0 font-[var(--font-heading)] text-3xl font-semibold leading-tight tracking-[-.03em] sm:text-4xl">
-            Ideas for the work ahead.
-          </h2>
-          <Link
-            href="/insights/category/dei-b-strategy"
-            className="inline-flex items-center gap-2 font-semibold text-[#0f6e73] no-underline"
-          >
-            Browse topics <ArrowRight size={16} aria-hidden="true" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {latest.map((article) => (
-            <InsightArticleCard article={article} key={article.slug} />
-          ))}
-        </div>
-        <nav
-          className="flex items-center justify-center gap-3 text-[#5c5c5c]"
-          aria-label="Pagination"
-        >
-          <span
-            className="inline-flex size-9 items-center justify-center rounded-sm bg-[#e8f5f6] text-[#0a0a0a]"
-            aria-current="page"
-          >
-            1
-          </span>
-          <Link
-            className="inline-flex size-9 items-center justify-center text-inherit no-underline hover:text-[#0f6e73]"
-            href="/insights/category/dei-b-strategy"
-          >
-            2
-          </Link>
-          <span
-            className="inline-flex size-9 items-center justify-center"
-            aria-hidden="true"
-          >
-            …
-          </span>
-          <Link
-            className="inline-flex size-9 items-center justify-center text-inherit no-underline hover:text-[#0f6e73]"
-            href="/insights/category/accessibility"
-          >
-            8
-          </Link>
-          <Link
-            className="inline-flex items-center gap-1.5 pl-2 text-inherit no-underline hover:text-[#0f6e73]"
-            href="/insights/category/accessibility"
-          >
-            Next <ArrowRight size={16} aria-hidden="true" />
-          </Link>
-        </nav>
-      </section>
+      <InsightsGrid articles={latest} />
       <section
         className="flex flex-col items-start justify-between gap-8 rounded-lg bg-[#17686c] px-7 py-10 text-white sm:px-12 sm:py-14 lg:flex-row lg:items-center"
         aria-label="Next steps"
