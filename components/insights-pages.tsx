@@ -92,7 +92,7 @@ function InsightsHeader({
       description="Articles, talks and resources from Chuks."
     >
       <nav
-        className="flex flex-wrap gap-0"
+        className="insight-filter flex flex-wrap gap-0"
         aria-label="Filter articles by category"
       >
         <Link
@@ -130,7 +130,7 @@ export async function InsightsPage() {
           Articles, talks and resources from Chuks.
         </p>
         <nav
-          className="flex flex-wrap gap-0"
+          className="insight-filter flex flex-wrap gap-0"
           aria-label="Filter articles by category"
         >
           <Link

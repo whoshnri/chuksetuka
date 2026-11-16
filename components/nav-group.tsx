@@ -18,7 +18,9 @@ export function NavGroup({ label, active, children }: NavGroupProps) {
 
   useEffect(() => {
     if (!open || active) return
-    function onPointer(event: PointerEvent) {
+    // Listen on click, not pointerdown: collapsing on pointerdown shifts the menu
+    // under the finger mid-tap, so the tap lands on whatever slid into that spot.
+    function onPointer(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false)
     }
     function onKey(event: KeyboardEvent) {
@@ -27,10 +29,10 @@ export function NavGroup({ label, active, children }: NavGroupProps) {
         buttonRef.current?.focus()
       }
     }
-    document.addEventListener('pointerdown', onPointer)
+    document.addEventListener('click', onPointer)
     document.addEventListener('keydown', onKey)
     return () => {
-      document.removeEventListener('pointerdown', onPointer)
+      document.removeEventListener('click', onPointer)
       document.removeEventListener('keydown', onKey)
     }
   }, [open, active])

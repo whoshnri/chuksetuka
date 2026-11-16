@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef, type ReactNode } from 'react'
+import { useRef, type MouseEvent, type ReactNode } from 'react'
 import { Menu } from 'lucide-react'
 
 type MobileHeaderProps = {
@@ -13,8 +13,11 @@ type MobileHeaderProps = {
 export function MobileHeader({ logoSrc, children }: MobileHeaderProps) {
   const menuRef = useRef<HTMLDetailsElement>(null)
 
-  function closeMenu() {
-    if (menuRef.current) {
+  // Close only when a link is followed. Taps on the expandable group buttons
+  // ("Our Impact", "Services") must leave the menu open so their sub-links are reachable.
+  function closeMenu(event: MouseEvent<HTMLDivElement>) {
+    const target = event.target as HTMLElement
+    if (menuRef.current && target.closest('a')) {
       menuRef.current.open = false
     }
   }

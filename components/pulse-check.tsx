@@ -801,7 +801,7 @@ export function PulseCheck() {
           </li>
         </ul>
 
-        <section className="rounded-lg shape-fancy grid grid-cols-1 gap-8 bg-wine px-7 pb-16 pt-9 text-white shadow-lg md:grid-cols-[minmax(0,1.25fr)_minmax(230px,.75fr)] md:px-12 md:pb-20 md:pt-12">
+        <section className="pulse-check-intro-panel rounded-lg shape-fancy grid grid-cols-1 gap-8 bg-wine px-7 pb-16 pt-9 text-white shadow-lg md:grid-cols-[minmax(0,1.25fr)_minmax(230px,.75fr)] md:px-12 md:pb-20 md:pt-12">
           <div className="flex flex-col items-start gap-5">
             <h2 className="m-0 max-w-[18ch] font-[var(--font-heading)] text-3xl font-semibold leading-tight !text-white sm:text-4xl">
               Ten questions. A clearer next step.

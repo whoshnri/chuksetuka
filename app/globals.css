@@ -11892,3 +11892,123 @@ body,
     transform: translateX(3px);
   }
 }
+
+
+/* ==========================================================================
+   Mobile fixes
+   Kept unlayered and at the end of the file so they win over earlier rules.
+   ========================================================================== */
+
+/* "Read article" was teal on a teal card, so it was invisible at every size. */
+.insight-fancy-card .text-link,
+.insight-fancy-card .text-link svg {
+  color: #fff;
+}
+
+@media (max-width: 980px) {
+  /* Header: keep "Menu" and the icon on one line instead of stacking. */
+  .site-shell > .mobile-header .mobile-menu__trigger,
+  .founder-site:not(.site-shell) > .mobile-header .mobile-menu__trigger {
+    display: inline-flex;
+    width: auto;
+    min-width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-inline: 4px;
+    white-space: nowrap;
+  }
+
+  /* Mobile menu: the link arrow is doubled for the desktop hover swap. Show one. */
+  .mobile-menu__panel .menu-link-arrow {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+  }
+
+  .mobile-menu__panel .menu-link-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-menu__panel .menu-link-arrow svg + svg {
+    display: none;
+  }
+
+  /* Home hero: the secondary link sat teal on a dark photo. */
+  .site-shell .home-page .home-hero .action-link--text,
+  .site-shell .home-page .home-hero .action-link--text svg {
+    color: #fff;
+  }
+
+  /* Home "How I work": heading had collapsed to body size and sat under the button. */
+  .site-shell .home-page .impact-panel__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .site-shell .home-page .impact-panel__intro h2 {
+    max-width: none;
+    font-size: clamp(28px, 7.6vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .site-shell .home-page .impact-panel__intro .action-link {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  /* About: closing cards were sized for a row (width: 0 + flex-grow),
+     so in the stacked layout they collapsed to 40px strips. */
+  .site-shell .about-page .about-page__closing-cards > .partner-section,
+  .site-shell .about-page .about-page__closing-cards > .page-cta {
+    width: 100%;
+    min-height: 0;
+    flex: 0 0 auto;
+  }
+
+  /* About: leave room for the video badge so it does not cover the title. */
+  .site-shell .about-page .about-services .service-card.service-card--video:first-child {
+    padding-top: 88px;
+  }
+
+  /* Insights: one swipeable row of filters instead of a ragged wrap. */
+  .insight-filter {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .insight-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .insight-filter > a {
+    flex: none;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  /* Shaped panels clip their bottom corner. Give the content room above the cut. */
+  .site-shell .masterclass-page .module-grid > article.module-grid__included {
+    padding-bottom: 88px !important;
+  }
+
+  .site-shell .masterclass-page .investment-card {
+    padding-bottom: 150px;
+  }
+
+  .pulse-check-intro-panel {
+    padding-bottom: 150px;
+  }
+}
