@@ -13,7 +13,9 @@ type PayloadDoc = {
 async function getApiResponse(path: string) {
   try {
     const { env } = getCloudflareContext()
-    return await env.API.fetch(new Request(`https://api.internal${path}`, { headers: { accept: 'application/json' } }))
+    const res = await env.API.fetch(new Request(`https://api.internal${path}`, { headers: { accept: 'application/json' } }))
+    if (res.status === 503) throw new Error('service binding unavailable')
+    return res
   } catch {
     const origin = process.env.HONO_API_URL || 'http://127.0.0.1:8787'
     try { return await fetch(new URL(path, origin), { next: { revalidate: 60 } }) } catch { return null }

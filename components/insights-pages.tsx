@@ -170,7 +170,7 @@ export async function InsightsPage() {
           aria-label="Featured article"
         >
           <InsightArticleCard article={featured} featured />
-          <aside className="flex flex-col gap-5 rounded-bl-[48px] bg-[#17686c] px-7 py-8 text-white sm:px-9 sm:py-10">
+          <aside className="hidden flex-col gap-5 rounded-bl-[48px] bg-[#17686c] px-7 py-8 text-white sm:px-9 sm:py-10 lg:flex">
             <h2 className="m-0 !text-white text-2xl font-semibold">
               Most read
             </h2>
@@ -310,7 +310,7 @@ export function InsightArticlePage({ article, relatedArticles = [] }: { article:
         />
       </figure>
       <div className="article-layout">
-        {sidebarItems.length > 0 ? <BounceSidebar items={sidebarItems} /> : null}
+        {sidebarItems.length > 0 ? <div className="hidden lg:block"><BounceSidebar items={sidebarItems} /></div> : null}
         <article className="article-body">
           <ArticleRichText body={articleBody} />
           <ArticleEngagement title={article.title} slug={article.slug} />
