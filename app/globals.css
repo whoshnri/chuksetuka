@@ -2683,6 +2683,8 @@ summary:focus-visible {
 @media (max-width: 640px) {
   .site-shell .home-page .impact-panel {
     grid-template-columns: 1fr;
+    background: #0f6e73;
+    color: #fff;
   }
 
   .site-shell .home-page .impact-panel .impact-grid {
@@ -2694,10 +2696,26 @@ summary:focus-visible {
     min-height: 116px;
     grid-template-columns: 56px minmax(0, 1fr);
     column-gap: 16px;
+    background: transparent !important;
+    color: #fff !important;
+    border-top: 1px solid rgb(255 255 255 / 34%);
+  }
+
+  .site-shell .home-page .impact-panel .impact-card:first-child {
+    border-top: 0;
   }
 
   .site-shell .home-page .impact-panel .impact-card > span {
     font-size: 40px;
+    color: #fccf2c;
+  }
+
+  .site-shell .home-page .impact-panel .impact-card h3 {
+    color: #fff !important;
+  }
+
+  .site-shell .home-page .impact-panel .impact-card p {
+    color: #e8f5f2 !important;
   }
 
   .site-shell .home-page .impact-panel__intro,
@@ -2708,6 +2726,7 @@ summary:focus-visible {
 
   .site-shell .home-page .impact-panel__intro h2 {
     font-size: 38px;
+    color: #fff;
   }
 }
 
@@ -8326,6 +8345,10 @@ body {
   background: #302e2c !important;
 }
 
+.site-shell .home-page .impact-panel .impact-card {
+  background: transparent !important;
+}
+
 .site-shell .service-card {
   min-height: 280px;
   justify-content: space-between;
@@ -10571,7 +10594,7 @@ body,
   margin-top: 6px;
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq .faq-item:first-child {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq .faq-item:first-child {
   border-top: 0;
 }
 
@@ -10579,12 +10602,12 @@ body,
   clip-path: url(#shape-pear-bl);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__list {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__list {
   gap: 10px;
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item,
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item:first-child {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item,
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item:first-child {
   margin: 0;
   padding: 0 22px;
   border: 0;
@@ -10593,11 +10616,11 @@ body,
   transition: background-color 420ms ease;
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item.is-open {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item.is-open {
   background: var(--brand-teal-soft);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__trigger {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__trigger {
   display: flex;
   width: 100%;
   min-height: 72px;
@@ -10616,12 +10639,12 @@ body,
   line-height: 1.4;
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__trigger:focus-visible {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__trigger:focus-visible {
   outline: 2px solid var(--brand-teal-ink);
   outline-offset: 3px;
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__icon {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__icon {
   position: relative;
   display: grid;
   width: 28px;
@@ -10631,42 +10654,42 @@ body,
   color: var(--brand-teal-ink);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__icon svg {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__icon svg {
   position: absolute;
   transition: opacity 360ms ease, transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__plus {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__plus {
   opacity: 1;
   transform: rotate(0) scale(1);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__minus {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__minus {
   opacity: 0;
   transform: rotate(-90deg) scale(.75);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item.is-open .masterclass-faq__plus {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item.is-open .masterclass-faq__plus {
   opacity: 0;
   transform: rotate(90deg) scale(.75);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item.is-open .masterclass-faq__minus {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item.is-open .masterclass-faq__minus {
   opacity: 1;
   transform: rotate(0) scale(1);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__panel {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__panel {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 720ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item.is-open .masterclass-faq__panel {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item.is-open .masterclass-faq__panel {
   grid-template-rows: 1fr;
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__answer {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__answer {
   min-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -10674,12 +10697,12 @@ body,
   transition: opacity 360ms ease, transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item.is-open .masterclass-faq__answer {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item.is-open .masterclass-faq__answer {
   opacity: 1;
   transform: translateY(0);
 }
 
-.site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__answer p {
+.site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__answer p {
   max-width: 76ch;
   margin: 0;
   padding: 0 0 22px;
@@ -10689,10 +10712,10 @@ body,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__item,
-  .site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__icon svg,
-  .site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__panel,
-  .site-shell :is(.masterclass-page, .faq-page) .masterclass-faq__answer {
+  .site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__item,
+  .site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__icon svg,
+  .site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__panel,
+  .site-shell :is(.masterclass-page, .faq-page, .home-page) .masterclass-faq__answer {
     transition-duration: 1ms;
   }
 }
@@ -11965,5 +11988,265 @@ body,
 
   .pulse-check-intro-panel {
     padding-bottom: 150px;
+  }
+}
+
+/* ── Hero Image Reveal ── */
+.hero-image-reveal {
+  position: relative;
+  height: 300vh;
+  margin: calc(-1 * var(--shell-pad-top, 0px)) calc(-1 * var(--shell-gutter, 24px)) 0;
+}
+
+.hero-image-reveal__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-reveal__grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  will-change: transform;
+}
+
+.hero-image-reveal__cell {
+  position: relative;
+  overflow: hidden;
+  will-change: transform, opacity;
+  transition: none;
+  min-height: 0;
+}
+
+.hero-image-reveal__cell--hero {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+.hero-image-reveal__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.hero-image-reveal__text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 48px 24px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  will-change: transform, opacity;
+  z-index: 20;
+}
+
+.hero-image-reveal__text h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 4.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+.hero-image-reveal__subtitle {
+  margin: 0;
+  color: #fff !important;
+  font-family: var(--font-body-serif), Georgia, serif !important;
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+.hero-image-reveal__text p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(15px, 1.8vw, 19px);
+  line-height: 1.6;
+  max-width: 48ch;
+}
+
+.hero-image-reveal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.hero-image-reveal__actions .action-link--text-white {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero-image-reveal__actions .action-link--text-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 980px) {
+  .hero-image-reveal {
+    height: 280vh;
+  }
+
+  .hero-image-reveal__grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .hero-image-reveal__cell--hero {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .hero-image-reveal__text {
+    padding: 40px 20px 48px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-image-reveal {
+    height: 250vh;
+  }
+
+  .hero-image-reveal__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+
+  .hero-image-reveal__cell--hero {
+    grid-column: 1 / -1;
+    grid-row: 1 / 3;
+  }
+
+  .hero-image-reveal__text {
+    padding: 24px 16px 32px;
+    gap: 14px;
+  }
+
+  .hero-image-reveal__text h2 {
+    font-size: 48px;
+    max-width: 18ch;
+  }
+
+  .hero-image-reveal__subtitle {
+    font-size: 54px !important;
+  }
+
+  .hero-image-reveal__text p {
+    font-size: 20px;
+  }
+
+  .hero-image-reveal__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-image-reveal__actions .action-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Pulse Promo Featured ── */
+.pulse-promo.pulse-promo--featured {
+  position: relative;
+  background: linear-gradient(135deg, var(--brand-teal-ink) 0%, #0d4f52 100%) !important;
+  border-radius: 20px;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden;
+}
+
+.pulse-promo--featured::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  right: -20%;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+.pulse-promo--featured::after {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  left: -15%;
+  width: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+.pulse-promo--featured .pulse-promo__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 48px 40px 52px;
+}
+
+.pulse-promo--featured .eyebrow {
+  color: var(--brand-coral);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.pulse-promo.pulse-promo--featured h2 {
+  color: #fff !important;
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.5vw, 40px) !important;
+  font-weight: 700;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 20ch;
+}
+
+.pulse-promo.pulse-promo--featured p:not(.eyebrow) {
+  color: #fff !important;
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  margin: 0;
+  max-width: 48ch;
+}
+
+.pulse-promo--featured .action-link {
+  margin-top: 8px;
+}
+
+@media (min-width: 768px) {
+  .pulse-promo--featured .pulse-promo__inner {
+    padding: 64px 56px 68px;
+    max-width: 640px;
   }
 }

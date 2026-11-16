@@ -62,7 +62,7 @@ export function ActionLink({
 }: {
   href: string
   children: ReactNode
-  variant?: "teal" | "orange" | "outline" | "text"
+  variant?: "teal" | "orange" | "outline" | "text" | "text-white"
   className?: string
 }) {
   return (

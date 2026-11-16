@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { ArrowRight, Play, Scales, Target, UsersThree } from "./phosphor-icons";
 import { ScrollQuote } from "./scroll-quote";
 import { MasterclassFeature } from "./masterclass-feature";
+import { HeroImageReveal } from "./hero-image-reveal";
 import { SiteShell } from "./site-shell";
 import { Shape } from "./shape";
 import { AboutImageCarousel } from "./about-image-carousel";
@@ -238,7 +239,7 @@ export function HomePage() {
           <p>
             Basically, I’ve been around the block (and probably redesigned a few
             ramps while I was at it). As a proud Black man living with a
-            disability, I don’t get to “opt out” of conversations about race,
+            disability, I don’t get to "opt out" of conversations about race,
             inclusion or accessibility. My very existence is the conversation.
           </p>
           <Link href="/founder" className="text-link">
@@ -253,6 +254,19 @@ export function HomePage() {
             sizes="(max-width: 980px) 100vw, 480px"
           />
         </figure>
+      </section>
+
+      <section className="pulse-promo pulse-promo--featured">
+        <div className="pulse-promo__inner">
+          <h2>Is your culture inclusive… or just well-branded?</h2>
+          <p>
+            10 questions. 5 minutes. Instant, honest result — with practical
+            next steps you can act on straight away.
+          </p>
+          <ActionLink href="/pulse-check" variant="orange">
+            Start the pulse check
+          </ActionLink>
+        </div>
       </section>
 
       <section className="home-services" id="services">
@@ -304,7 +318,7 @@ export function HomePage() {
             <h3>I boost impact</h3>
             <p>
               From shifting strategy to shaping culture, I help you move from
-              “we should do something” to change that sticks.
+              "we should do something" to change that sticks.
             </p>
           </article>
         </div>
@@ -312,25 +326,42 @@ export function HomePage() {
 
       <ScrollQuote />
 
-      <MasterclassFeature />
+      <PartnerSection showEyebrow={false} />
 
-      <div className="home-duo">
-        <section className="pulse-promo">
-          <div>
-            <h2>Is your culture inclusive… or just well-branded?</h2>
-            <p>
-              Take the 5-minute Inclusion Pulse Check · 10 questions · instant
-              result
-            </p>
-          </div>
-          <ActionLink href="/pulse-check">Start the pulse check</ActionLink>
-        </section>
-        <PartnerSection showEyebrow={false} />
-      </div>
+      <HeroImageReveal />
+
+      <section className="home-faq masterclass-faq">
+        <SectionHeading title="People usually ask." />
+        <MasterclassFaq faqs={homeFaqs} />
+      </section>
+
       <HomepageEngagementPopups />
     </SiteShell>
   );
 }
+
+const homeFaqs: [string, string][] = [
+  [
+    "What does Chuks Etuka Consulting do?",
+    "We help organisations turn good intentions about diversity, equity, inclusion and belonging (DEI&B) into meaningful action. From training and strategy to accessibility audits and inclusive leadership coaching.",
+  ],
+  [
+    "Who do you work with?",
+    "Charities, local authorities, schools, community organisations, social enterprises, SMEs and other purpose-driven businesses. You don't need a dedicated DEI&B department to start the conversation.",
+  ],
+  [
+    "Can training be tailored to our organisation?",
+    "Absolutely. Effective inclusion training should reflect your context, challenges and objectives, not arrive in a generic PowerPoint wearing a different logo.",
+  ],
+  [
+    "How much does it cost?",
+    "It depends on the service, format and level of support needed. If you're working with a limited budget, tell us. We can discuss your priorities and find a proportionate starting point.",
+  ],
+  [
+    "How do we get started?",
+    "Book a free 30-minute scoping call. We'll explore your priorities and work out the right next step together, no commitment required.",
+  ],
+];
 
 export function AboutPage() {
   return (
@@ -540,7 +571,7 @@ export function MasterclassPage() {
           </h1>
           <p>
             A workshop for SME leaders, local authorities, education
-            institutions and teams who are tired of “doing DEI” and want to
+            institutions and teams who are tired of "doing DEI" and want to
             start doing inclusion properly.
           </p>
           <ActionLink href="/book-a-call" variant="orange">
@@ -641,8 +672,8 @@ export function MasterclassPage() {
               </h3>
               <p className="!m-0 !max-w-[54ch] !text-base !leading-[1.6] !text-white/90">
                 How to run meetings where quieter voices are heard, and
-                structure recruitment panels so “culture fit” doesn’t become
-                code for “people like us”.
+                structure recruitment panels so "culture fit" doesn’t become
+                code for "people like us".
               </p>
             </div>
           </article>
@@ -678,8 +709,8 @@ export function MasterclassPage() {
                 Make decisions differently
               </h3>
               <p className="!m-0 !max-w-[54ch] !text-base !leading-[1.6] !text-white/90">
-                Move from “we value diversity” to “here’s how we make decisions
-                differently”.
+                Move from "we value diversity" to "here’s how we make decisions
+                differently".
               </p>
             </div>
           </article>
@@ -820,16 +851,16 @@ export function MasterclassPage() {
         />
         <div className="quote-grid">
           <blockquote>
-            “Chuks created a space that was challenging but safe. We left with
-            real actions, not just awareness.”
+            "Chuks created a space that was challenging but safe. We left with
+            real actions, not just awareness."
           </blockquote>
           <blockquote>
-            “The most practical inclusion session I have ever been part of. It
-            shifted my way of thinking.”
+            "The most practical inclusion session I have ever been part of. It
+            shifted my way of thinking."
           </blockquote>
           <blockquote>
-            “Honest, funny and deeply strategic. Exactly what our senior team
-            needed.”
+            "Honest, funny and deeply strategic. Exactly what our senior team
+            needed."
           </blockquote>
         </div>
         <Link href="/testimonials" className="text-link">

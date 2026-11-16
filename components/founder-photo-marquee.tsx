@@ -4,10 +4,14 @@ import Image from "next/image"
 import { motion, useReducedMotion } from "motion/react"
 
 const photos = [
-  { src: "/assets/marquee-speaking.jpg", alt: "Chuks speaking at a community event" },
-  { src: "/assets/marquee-workshop.jpg", alt: "Participants taking part in a workshop" },
-  { src: "/assets/home-training.jpg", alt: "Chuks smiling at an event" },
-  { src: "/assets/founder-audience.jpg", alt: "An audience listening to a presentation" },
+  { src: "/images/group.jpeg", alt: "Chuks with a diverse group of workshop participants" },
+  { src: "/images/1771853186642.jpeg", alt: "Chuks in traditional Igbo attire" },
+  { src: "/images/1762874376567.jpeg", alt: "Chuks on a cobbled street in Canterbury" },
+  { src: "/images/1768920137845.jpeg", alt: "Chuks smiling on a boat" },
+  { src: "/images/1779802181910.jpeg", alt: "Chuks on a street in Nigeria" },
+  { src: "/images/1790022052206.jpeg", alt: "Chuks holding Talk Like TED book" },
+  { src: "/images/1775496917673.jpeg", alt: "Chuks laughing in the park" },
+  { src: "/images/1781544422444.jpeg", alt: "Chuks at Wembley Stadium" },
 ]
 
 export function FounderPhotoMarquee() {
