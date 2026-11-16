@@ -133,7 +133,7 @@ export function PartnerSection({ showEyebrow = true, className = "" }: { showEye
     <section className={`partner-section${className ? ` ${className}` : ""}`}>
 
       <div className="partner-section__content">
-        <Image src={paperAssets.reedLearning} alt="" width={180} height={90} className="partner-section__logo" />
+        <Image src={paperAssets.reedLearning} alt="Reed Learning logo" width={180} height={90} className="partner-section__logo" />
         <div>
           <h2>Reed Learning</h2>
           <p>Reed Learning is dedicated to delivering high-quality training and professional development for your business or organisation. They make employee learning simple and effective with curated learning packages, a breadth of digital and in-person learning products, and tailored advice to help you find the right solution for your business.</p>

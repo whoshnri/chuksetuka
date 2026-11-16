@@ -20,14 +20,41 @@ const sourceSerif = Source_Serif_4({
 })
 
 export const metadata: Metadata = {
-  title: 'Chuks Etuka | Inclusive Culture & DEI Strategy',
+  metadataBase: new URL('https://www.chuksetukaconsulting.com'),
+  title: {
+    default: 'Chuks Etuka Consulting | DEI&B Strategy, Training & Inclusive Leadership',
+    template: '%s | Chuks Etuka Consulting',
+  },
   description:
-    'Lived-experience-led DEI&B strategy, workshops and coaching to help organisations build more inclusive workplaces.',
+    'Lived-experience-led DEI&B strategy, workshops and coaching to help organisations build more inclusive workplaces. Based in the UK.',
+  keywords: [
+    'DEI consultant', 'DEI&B strategy', 'diversity equity inclusion',
+    'inclusive leadership', 'inclusion training UK', 'accessibility audit',
+    'anti-racism training', 'psychological safety', 'workplace inclusion',
+    'Chuks Etuka', 'EDI consultant UK',
+  ],
+  authors: [{ name: 'Chuks Etuka', url: 'https://www.chuksetukaconsulting.com/founder' }],
+  creator: 'Chuks Etuka Consulting',
+  publisher: 'Chuks Etuka Consulting',
   openGraph: {
-    title: 'Chuks Etuka | Inclusive Culture & DEI Strategy',
+    title: 'Chuks Etuka Consulting | DEI&B Strategy, Training & Inclusive Leadership',
     description:
       'Lived-experience-led DEI&B strategy, workshops and coaching to help organisations build more inclusive workplaces.',
     type: 'website',
+    locale: 'en_GB',
+    siteName: 'Chuks Etuka Consulting',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Chuks Etuka Consulting — Decode DEI. Build trust. Boost impact.' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Chuks Etuka Consulting | DEI&B Strategy & Training',
+    description: 'Lived-experience-led DEI&B strategy, workshops and coaching to help organisations build more inclusive workplaces.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   icons: {
     icon: [
@@ -45,6 +72,9 @@ export const metadata: Metadata = {
       },
     ],
     apple: '/apple-icon.png',
+  },
+  alternates: {
+    canonical: '/',
   },
 }
 

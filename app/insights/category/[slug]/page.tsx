@@ -18,7 +18,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const categories = await getCategories()
   const category = categories?.find((item) => item.slug === slug)
   if (!category) return { title: "Topic not found" }
-  return { title: `${category.label} insights`, description: `Articles and resources on ${category.label.toLowerCase()} from Chuks Etuka.` }
+  return {
+    title: `${category.label} Insights & Articles`,
+    description: `Articles and resources on ${category.label.toLowerCase()} from Chuks Etuka Consulting.`,
+    alternates: { canonical: `/insights/category/${slug}` },
+  }
 }
 
 export default async function Page({ params }: PageProps) {

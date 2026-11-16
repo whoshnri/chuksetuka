@@ -918,7 +918,7 @@ export function PulseCheck() {
             })}
           </fieldset>
 
-          <div className="flex flex-col-reverse justify-between gap-3 sm:flex-row sm:items-center">
+          <div className="flex flex-row items-center justify-between gap-3">
             <Button
               variant="outline"
               type="button"

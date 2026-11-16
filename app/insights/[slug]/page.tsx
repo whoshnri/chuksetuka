@@ -12,7 +12,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const { article } = await getArticle(slug)
   if (!article) return { title: "Insight not found" }
-  return { title: article.title, description: article.excerpt }
+  return {
+    title: article.title,
+    description: article.excerpt,
+    alternates: { canonical: `/insights/${slug}` },
+    openGraph: { title: article.title, description: article.excerpt, type: "article", images: article.image ? [{ url: article.image, alt: article.imageAlt || article.title }] : undefined },
+  }
 }
 
 export default async function Page({ params }: PageProps) {
@@ -33,5 +38,23 @@ export default async function Page({ params }: PageProps) {
   }
 
   if (!article) notFound()
-  return <InsightArticlePage article={article} relatedArticles={allArticles || []} />
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    image: article.image,
+    datePublished: article.date,
+    author: { "@type": "Person", name: "Chuks Etuka", url: "https://www.chuksetukaconsulting.com/founder" },
+    publisher: { "@type": "Organization", name: "Chuks Etuka Consulting", url: "https://www.chuksetukaconsulting.com" },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.chuksetukaconsulting.com/insights/${slug}` },
+  }
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <InsightArticlePage article={article} relatedArticles={allArticles || []} />
+    </>
+  )
 }

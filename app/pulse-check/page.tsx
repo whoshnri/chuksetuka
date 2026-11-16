@@ -3,8 +3,9 @@ import { SiteShell } from "@/components/site-shell"
 import { PulseCheck } from "@/components/pulse-check"
 
 export const metadata: Metadata = {
-  title: "Inclusion Pulse Check",
-  description: "Take a five-minute inclusion pulse check and find practical next steps for your organisation.",
+  title: "Free Inclusion Pulse Check — 10 Questions, Instant Result",
+  description: "Take a five-minute inclusion pulse check. 10 questions, instant result with practical next steps for your organisation's DEI&B journey.",
+  alternates: { canonical: "/pulse-check" },
 }
 
 export default function Page() {
