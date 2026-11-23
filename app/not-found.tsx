@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <SiteShell activePage="">
+    <SiteShell activePage="home">
       <ContentError
         title="Page not found"
         message="Sorry, we couldn't find the page you're looking for. It may have been moved or removed."
