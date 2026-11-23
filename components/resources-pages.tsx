@@ -79,29 +79,33 @@ export function TestimonialsPage() {
 }
 
 export function GalleryPage({ cmsGallery }: { cmsGallery?: GalleryItem[] | null }) {
-  const items: { title: string; images: { src: string; alt: string }[] }[] = cmsGallery && cmsGallery.length > 0
-    ? cmsGallery
-    : galleryImages.map((item) => ({ title: item.alt, images: [{ src: item.src, alt: item.alt }] }))
+  const items = cmsGallery ?? []
 
   return (
     <SiteShell activePage="gallery" className="gallery-page">
       <PageIntro eyebrow="Gallery" title="Training and events." description="Moments from recent sessions with organisations across the UK." />
-      <section className="gallery-section" aria-label="Training and event gallery">
-        <div className="gallery-grid">
-          {items.map((item, index) => (
-            <figure className={`gallery-card gallery-card--${(index % 5) + 1}`} key={`${item.title}-${index}`}>
-              <div className="gallery-card__image media-frame">
-                {item.images.length > 1 ? (
-                  <GalleryCarousel images={item.images} />
-                ) : (
-                  <Image src={item.images[0].src} alt={item.images[0].alt} fill sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 500px" />
-                )}
-              </div>
-              <figcaption>{item.title}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
+      {items.length > 0 ? (
+        <section className="gallery-section" aria-label="Training and event gallery">
+          <div className="gallery-grid">
+            {items.map((item, index) => (
+              <figure className={`gallery-card gallery-card--${(index % 5) + 1}`} key={`${item.title}-${index}`}>
+                <div className="gallery-card__image media-frame">
+                  {item.images.length > 1 ? (
+                    <GalleryCarousel images={item.images} />
+                  ) : (
+                    <Image src={item.images[0].src} alt={item.images[0].alt} fill sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 500px" />
+                  )}
+                </div>
+                <figcaption>{item.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section className="gallery-section" aria-label="Gallery empty state">
+          <p style={{ textAlign: 'center', color: '#888', padding: '4rem 1rem' }}>Gallery items are managed in the CMS. No items published yet.</p>
+        </section>
+      )}
       <PageCta className="page-cta--fancy-teal" title="Want to bring this energy to your team?" description="Let's make the next session work for your people and your goals." />
     </SiteShell>
   )
