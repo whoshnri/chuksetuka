@@ -54,6 +54,38 @@ export async function getArticle(slug: string): Promise<{ article: InsightArticl
   return { article: payload.docs?.[0] ? toArticle(payload.docs[0]) : undefined, error: false }
 }
 
+export type GalleryItem = {
+  title: string
+  images: { src: string; alt: string }[]
+}
+
+type GalleryDoc = {
+  title: string
+  images: { image: { url?: string; alt?: string; sizes?: { hero?: { url?: string } } } | string }[]
+}
+
+function toGalleryItem(doc: GalleryDoc): GalleryItem {
+  const cmsURL = process.env.CMS_PUBLIC_URL
+  const assetsURL = process.env.ASSETS_PUBLIC_URL
+  return {
+    title: doc.title,
+    images: doc.images.map((entry) => {
+      const media = typeof entry.image === 'object' ? entry.image : null
+      const raw = media?.sizes?.hero?.url || media?.url || ''
+      const imageHost = raw.startsWith('/api/') ? cmsURL : assetsURL || cmsURL
+      const src = raw.startsWith('/') && imageHost ? new URL(raw, imageHost).toString() : raw
+      return { src, alt: media?.alt || doc.title }
+    }).filter((img) => img.src),
+  }
+}
+
+export async function getGallery(): Promise<GalleryItem[] | null> {
+  const response = await getApiResponse('/content/gallery')
+  if (!response?.ok) return null
+  const payload = await response.json() as { docs?: GalleryDoc[] }
+  return payload.docs?.length ? payload.docs.map(toGalleryItem) : []
+}
+
 export async function getCategories(): Promise<{ label: string; slug: string }[] | null> {
   const response = await getApiResponse('/content/categories')
   if (!response?.ok) return null

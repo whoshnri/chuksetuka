@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { GalleryPage } from "@/components/resources-pages"
+import { getGallery } from "@/lib/server/content"
 
 export const metadata: Metadata = {
   title: "Training & Events Gallery",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/gallery" },
 }
 
-export default function Page() {
-  return <GalleryPage />
+export default async function Page() {
+  const cmsGallery = await getGallery()
+  return <GalleryPage cmsGallery={cmsGallery} />
 }

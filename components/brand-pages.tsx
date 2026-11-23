@@ -5,6 +5,7 @@ import { ArrowRight, Play, Scales, Target, UsersThree } from "./phosphor-icons";
 import { ScrollQuote } from "./scroll-quote";
 import { MasterclassFeature } from "./masterclass-feature";
 import { HeroImageReveal } from "./hero-image-reveal";
+import { HomeArticles } from "./home-articles";
 import { SiteShell } from "./site-shell";
 import { Shape } from "./shape";
 import { AboutImageCarousel } from "./about-image-carousel";
@@ -330,6 +331,8 @@ export function HomePage() {
 
       <HeroImageReveal />
 
+      <HomeArticles />
+
       <section className="home-faq masterclass-faq">
         <SectionHeading title="People usually ask." />
         <MasterclassFaq faqs={homeFaqs} />
@@ -503,6 +506,7 @@ export function ServicesPage() {
                 alt={service.alt}
                 fill
                 sizes="(max-width: 980px) 100vw, 480px"
+                className="object-top"
               />
             </figure>
             <div className="service-detail__copy !gap-5">
@@ -580,8 +584,8 @@ export function MasterclassPage() {
         </div>
         <figure className="masterclass-hero__photo shape shape-pear-tr">
           <Image
-            src={paperAssets.homeSpeaker}
-            alt="Chuks Etuka speaking at an event"
+            src={paperAssets.masterclassHero}
+            alt="Chuks delivering a session with EDI Champions for Advance UK"
             fill
             priority
             sizes="(max-width: 980px) 100vw, 44vw"

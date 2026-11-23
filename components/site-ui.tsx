@@ -25,6 +25,11 @@ export const paperAssets = {
   insightOne: "/assets/insight-one.jpg",
   insightTwo: "/assets/insight-two.jpg",
   insightThree: "/assets/insight-three.jpg",
+  masterclassHero: "/assets/masterclass-hero.jpg",
+  galleryAdvanceUk: "/assets/gallery-advance-uk.jpg",
+  logoRuna: "/assets/logo-runa.jpg",
+  logoHope: "/assets/logo-hope.jpg",
+  logoAdvanceUk: "/assets/logo-advance-uk.jpg",
 }
 
 type PageIntroProps = {

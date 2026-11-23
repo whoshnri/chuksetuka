@@ -5,18 +5,18 @@ import { useEffect, useRef, useState } from "react"
 import { ActionLink } from "./site-ui"
 
 const images = [
-  { src: "/images/1770041018921.jpeg", alt: "Chuks portrait in black and white" },
+  { src: "/assets/tedx-chuks.jpg", alt: "Chuks at TEDx Trafford" },
   { src: "/images/1771853186642.jpeg", alt: "Chuks in traditional Igbo attire" },
   { src: "/images/group.jpeg", alt: "Chuks with a diverse group of workshop participants" },
-  { src: "/images/1765980051873.jpeg", alt: "Chuks in a formal garden setting" },
-  { src: "/images/1768920137845.jpeg", alt: "Chuks smiling on a boat" },
-  { src: "/images/1775496917673.jpeg", alt: "Chuks laughing in the park" },
-  { src: "/images/1779802181910.jpeg", alt: "Chuks on a street in Nigeria" },
+  { src: "/assets/masterclass-hero.jpg", alt: "Chuks delivering a session with EDI Champions for Advance UK" },
+  { src: "/assets/service-keynote.jpg", alt: "Chuks speaking at a TEDx event" },
+  { src: "/assets/service-leadership.jpg", alt: "Chuks on a panel discussion about leadership and culture change" },
+  { src: "/assets/gallery-advance-uk.jpg", alt: "Chuks facilitating an EDI Champions session for Advance UK" },
   { src: "/images/1790022052206.jpeg", alt: "Chuks holding Talk Like TED book" },
-  { src: "/images/1781544422444.jpeg", alt: "Chuks at Wembley Stadium" },
+  { src: "/assets/service-training.jpg", alt: "Chuks speaking to an audience at TEDx Trafford" },
   { src: "/images/1762874376567.jpeg", alt: "Chuks on a cobbled street in Canterbury" },
-  { src: "/images/1776718150081.jpeg", alt: "Chuks relaxing on a pedalo" },
-  { src: "/images/1783947396938.jpeg", alt: "Chuks standing in an archway" },
+  { src: "/assets/gallery-one.jpg", alt: "Chuks with participants after an inclusive practice training" },
+  { src: "/assets/gallery-four.jpg", alt: "Chuks facilitating a session with staff" },
 ]
 
 export function HeroImageReveal() {
