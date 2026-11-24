@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react"
 import { faqGroups } from "./faq-data"
 import { MasterclassFaq } from "./masterclass-faq"
 import { GalleryCarousel } from "./gallery-carousel"
+import { GalleryExpandButton } from "./gallery-lightbox"
 import { SiteShell } from "./site-shell"
 import { ActionLink, PageCta, PageIntro, SectionHeading, paperAssets } from "./site-ui"
 import type { GalleryItem } from "@/lib/server/content"
@@ -95,6 +96,7 @@ export function GalleryPage({ cmsGallery }: { cmsGallery?: GalleryItem[] | null 
                   ) : (
                     <Image src={item.images[0].src} alt={item.images[0].alt} fill sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 500px" />
                   )}
+                  <GalleryExpandButton images={item.images} title={item.title} />
                 </div>
                 <figcaption>{item.title}</figcaption>
               </figure>
