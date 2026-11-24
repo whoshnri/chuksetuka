@@ -9521,6 +9521,7 @@ body,
 .site-shell .gallery-page .gallery-card__image img {
   overflow: hidden;
   border-radius: var(--radius-lg);
+  object-position: top;
 }
 
 .site-shell .gallery-page .gallery-grid {
